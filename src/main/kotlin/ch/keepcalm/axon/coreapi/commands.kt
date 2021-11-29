@@ -9,7 +9,7 @@ data class CreateAboCommand(
     @RoutingKey val aboId: UUID,
     val eMail: String,
     val startDatum: LocalDate,
-    val endDatum: LocalDate
+    val endDatum: LocalDate?
 )
 
 data class SelectedRecipeCommand(

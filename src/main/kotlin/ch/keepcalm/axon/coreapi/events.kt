@@ -16,5 +16,5 @@ data class RecipeSelectedEvent(
 
 data class AboCancelEvent(
     val aboId: UUID,
-    val endDatum: LocalDate
+    val endDatum: LocalDate?
 )

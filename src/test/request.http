@@ -1,0 +1,9 @@
+PUT http://localhost:8080/abos/d4135a4b-b12d-4400-9604-5212fdb193e0
+Content-Type: application/json
+
+{
+  "eMail": "foo@bar.ch",
+  "startDatum": "2021-11-29",
+  "endDatum": null
+}
+
