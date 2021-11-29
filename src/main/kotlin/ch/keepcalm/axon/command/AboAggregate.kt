@@ -39,7 +39,7 @@ class AboAggregate {
     @CommandHandler
     fun handle(command: CreateAboCommand){
         AggregateLifecycle.apply(
-            AboCancelEvent(aboId = command.aboId)
+            AboCancelEvent(aboId = command.aboId, endDatum = command.endDatum)
         )
     }
 
@@ -53,5 +53,10 @@ class AboAggregate {
     @EventSourcingHandler
     fun on(event: RecipeSelectedEvent){
         recipe = event.recipe
+    }
+
+    @EventSourcingHandler
+    fun on(event: CancelAboCommand){
+    	endDatum = event.endDatum
     }
 }

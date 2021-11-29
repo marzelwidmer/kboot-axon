@@ -14,4 +14,7 @@ data class RecipeSelectedEvent(
     val recipe: String
 )
 
-data class AboCancelEvent(val aboId: UUID)
+data class AboCancelEvent(
+    val aboId: UUID,
+    val endDatum: LocalDate
+)
