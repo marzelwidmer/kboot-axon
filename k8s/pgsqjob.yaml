@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: secondb
+spec:
+  template:
+    spec:
+      containers:
+      - name: secondb
+        image: bitnami/postgresql:latest
+        command: ["createdb"]
+        args: ["-h","postgresql", "-U", "postgres", "myseconddb" ]
+        env:
+        - name: PGPASSWORD
+          value: PNvHnvLzxH
+      restartPolicy: Never
+
