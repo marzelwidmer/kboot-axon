@@ -1,16 +1,16 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: secondb
+  name: eventstoredb
 spec:
   completions: 1
   template:
     spec:
       containers:
-      - name: secondb
+      - name: eventstoredb
         image: bitnami/postgresql:latest
         command: ["createdb"]
-        args: ["-h","postgresql", "-U", "postgres", "myseconddb" ]
+        args: ["-h","postgresql", "-U", "postgres", "eventstoredb" ]
         env:
         - name: PGPASSWORD
           value: PNvHnvLzxH
