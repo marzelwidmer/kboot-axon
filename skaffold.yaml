@@ -1,0 +1,22 @@
+apiVersion: skaffold/v2beta25
+kind: Config
+metadata:
+  name: kboot-axon-service
+build:
+  artifacts:
+    - image: c3smonkey/kboot-axon-service
+      buildpacks:
+        builder: gcr.io/buildpacks/builder:v1
+  tagPolicy:
+    sha256: { }
+deploy:
+  kustomize:
+    paths:
+      - k8s/installs/local
+profiles:
+  - name: local
+    deploy:
+      kustomize:
+        paths:
+          - k8s/installs/local
+
