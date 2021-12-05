@@ -1,0 +1,22 @@
+= Readme
+
+== Run with H2 Database
+
+[source]
+----
+SPRING_PROFILES_ACTIVE=h2 ./gradlew clean bootRun
+----
+
+== Run with Postgres Database
+First run docker compose in `docker` folder.
+
+[source]
+----
+cd docker
+docker-compose up &
+----
+
+[source]
+----
+SPRING_PROFILES_ACTIVE=postgres ./gradlew clean bootRun
+----
