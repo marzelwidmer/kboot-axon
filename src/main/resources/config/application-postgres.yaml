@@ -17,25 +17,26 @@ spring:
       schema-locations: classpath:sql/schema.sql
       mode: always
 
-#  jpa:
-#    properties:
-#      hibernate:
-#        format_sql: true
-#
-#    database-platform: org.hibernate.dialect.PostgreSQLDialect
-#    generate-ddl: true
-#    hibernate:
-#      ddl-auto: validate
-
-#  sql:
-#    init:
-#      schema-locations: classpath:sql/schema.sql
-
 logging.level:
   org.hibernate:
     SQL: DEBUG
     type.descriptor.sql.BasicBinder: TRACE
 
+---
+spring:
+  config:
+    activate:
+      on-profile: postgres-hibernate
 
-
-
+  datasource:
+    url: "jdbc:postgresql://${POSTGRES_HOST:localhost}:5432/eventstoredb"
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:PNvHnvLzxH}
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
