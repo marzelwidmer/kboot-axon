@@ -11,7 +11,8 @@ spring:
     active: default
     include:
       - common
-#      - h2
 #      - postgres
+#      - h2
+
   application:
     name:  kboot-axon

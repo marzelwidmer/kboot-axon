@@ -4,7 +4,7 @@ metadata:
   name: kboot-axon-service
 build:
   artifacts:
-    - image: c3smonkey/kboot-axon-service
+    - image: kboot-axon-service
       buildpacks:
         builder: gcr.io/buildpacks/builder:v1
   tagPolicy:
