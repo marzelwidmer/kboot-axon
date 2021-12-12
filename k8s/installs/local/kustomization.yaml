@@ -17,6 +17,7 @@ resources:
 
 # Patch Deployment
 patchesStrategicMerge:
+  - use-postgres.yaml
   - patch-service.yaml
   - patch-spring-profile.yaml
 

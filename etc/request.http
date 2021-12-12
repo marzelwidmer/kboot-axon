@@ -1,4 +1,4 @@
-PUT http://localhost:8080/abos/d4135a4b-b12d-4400-9604-5212fdb193e0
+PUT http://localhost:8080/abos/e5bcb925-5b28-4df7-b9dd-795c65c168a8
 Content-Type: application/json
 
 {
