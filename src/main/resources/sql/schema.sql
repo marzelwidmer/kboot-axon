@@ -6,6 +6,7 @@
 -- drop sequence if exists hibernate_sequence;
 
 create sequence IF NOT EXISTS hibernate_sequence;
+alter sequence hibernate_sequence owner to postgres;
 
 
 create table IF NOT EXISTS association_value_entry
@@ -30,7 +31,9 @@ create table IF NOT EXISTS domain_event_entry
     aggregate_identifier varchar(255) not null,
     sequence_number      int8         not null,
     type                 varchar(255),
-    primary key (global_index)
+    primary key (global_index),
+    constraint domain_event_aggregateIdentifier_sequenceNumber unique (aggregate_identifier, sequence_number),
+    constraint domain_event_eventIdentifier unique (event_identifier)
 );
 
 create table IF NOT EXISTS saga_entry
@@ -53,7 +56,8 @@ create table IF NOT EXISTS snapshot_event_entry
     payload_revision     varchar(255),
     payload_type         varchar(255) not null,
     time_stamp           varchar(255) not null,
-    primary key (aggregate_identifier, sequence_number, type)
+    primary key (aggregate_identifier, sequence_number, type),
+    constraint snapshot_event_eventIdentifier unique (event_identifier)
 );
 
 create table IF NOT EXISTS token_entry
@@ -66,9 +70,3 @@ create table IF NOT EXISTS token_entry
     token_type     varchar(255),
     primary key (processor_name, segment)
 );
-
--- alter sequence hibernate_sequence owner to postgres;
--- alter table domain_event_entry add constraint UK8s1f994p4la2ipb13me2xqm1w unique (aggregate_identifier, sequence_number);
--- alter table domain_event_entry add constraint UK_fwe6lsa8bfo6hyas6ud3m8c7x unique (event_identifier);
--- alter table snapshot_event_entry add constraint UK_e1uucjseo68gopmnd0vgdl44h unique (event_identifier);
-
