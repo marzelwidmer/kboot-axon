@@ -1,3 +1,4 @@
+###
 POST http://localhost:8080/abos/create/e5bcb925-5b28-4df7-b9dd-795c65c168a8
 Content-Type: application/json
 
@@ -8,7 +9,6 @@ Content-Type: application/json
 }
 
 ###
-
 POST http://localhost:8080/abos/selectrecipe/e5bcb925-5b28-4df7-b9dd-795c65c168a8
 Content-Type: application/json
 
@@ -17,3 +17,8 @@ Content-Type: application/json
 }
 
 ###
+GET http://localhost:8080/abos/e5bcb925-5b28-4df7-b9dd-795c65c168a8
+Content-Type: application/json
+
+
+

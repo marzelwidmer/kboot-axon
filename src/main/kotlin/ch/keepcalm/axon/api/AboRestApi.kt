@@ -1,8 +1,12 @@
 package ch.keepcalm.axon.api
 
+import FindAboQuery
 import ch.keepcalm.axon.coreapi.CreateAboCommand
 import ch.keepcalm.axon.coreapi.SelectedRecipeCommand
+import ch.keepcalm.axon.readmodel.AboView
 import org.axonframework.commandhandling.gateway.CommandGateway
+import org.axonframework.messaging.responsetypes.ResponseType
+import org.axonframework.messaging.responsetypes.ResponseTypes
 import org.axonframework.queryhandling.QueryGateway
 import org.springframework.web.bind.annotation.*
 import java.time.LocalDate
@@ -32,6 +36,14 @@ class AboRestApi(val commandGateway: CommandGateway, val queryGateway: QueryGate
             )
         )
     }
+
+    @GetMapping(value = ["/{aboId}"])
+    fun getAbo(@PathVariable aboId: String): CompletableFuture<AboView>? {
+        return queryGateway.query(FindAboQuery(aboId = UUID.fromString(aboId)),
+            ResponseTypes.instanceOf(AboView::class.java)
+        )
+    }
+
 }
 
 data class CreateAboPayload(val eMail: String, val startDatum: LocalDate, val endDatum: LocalDate?)
