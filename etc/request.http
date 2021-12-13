@@ -16,3 +16,9 @@ Content-Type: application/json
   "recipe": "ASIA"
 }
 
+###
+GET http://localhost:8080/abos/e5bcb925-5b28-4df7-b9dd-795c65c168a8
+Content-Type: application/json
+
+
+
