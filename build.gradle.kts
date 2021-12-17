@@ -33,8 +33,6 @@ dependencies {
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 	implementation("org.springframework.cloud:spring-cloud-starter")
 
-	// JPA
-	//	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	// Axon
 	implementation("org.axonframework:axon-spring-boot-starter:4.5.5"){
 		exclude("org.axonframework", "axon-server-connector")
@@ -44,10 +42,7 @@ dependencies {
 	// Spring Boot MongoDB
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 
-
 	runtimeOnly("io.micrometer:micrometer-registry-prometheus")
-	runtimeOnly("org.postgresql:postgresql")
-	runtimeOnly("com.h2database:h2")
 	testImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
