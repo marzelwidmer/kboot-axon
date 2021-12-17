@@ -6,13 +6,15 @@ server:
     include-exception: off
     include-stacktrace: never
     include-message: never
+
 spring:
   profiles:
     active: default
-    include:
-      - common
-#      - postgres
-#      - h2
+  config:
+    import:
+      - classpath:config/common.yaml
+#      - classpath:config/h2.yaml
+      - classpath:config/postgres.yaml
 
   application:
     name:  kboot-axon
