@@ -1,22 +1,12 @@
 package ch.keepcalm.axon.readmodel
 
-import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.data.annotation.Id
+import org.springframework.data.mongodb.core.mapping.Document
 import java.time.LocalDate
 import java.util.*
-import javax.persistence.*
-//
-//@Entity
-//class AboView(
-//    @Id val aboId : UUID? = null,
-//    val eMail: String,
-//    val startDatum: LocalDate,
-//    var endDatum: LocalDate? = null,
-//    var recipe: String? = null
-//) //: AbstractEntity()
-//
-//
 
-@Entity
+//@Entity
+@Document
 class AboView(
     @Id val id: UUID,
     var eMail: String,
@@ -24,5 +14,3 @@ class AboView(
     var endeDatum: LocalDate?,
     var recipe: String?
 )
-
-

@@ -14,7 +14,11 @@ spring:
     import:
       - classpath:config/common.yaml
 #      - classpath:config/h2.yaml
-      - classpath:config/postgres.yaml
+#      - classpath:config/postgres.yaml
 
   application:
     name:  kboot-axon
+
+  mongodb:
+    embedded:
+      version: 3.2.3

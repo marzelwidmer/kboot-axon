@@ -1,6 +1,6 @@
 package ch.keepcalm.axon.readmodel
 
-import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.data.mongodb.repository.MongoRepository
 import java.util.*
 
-interface AboViewRepository : JpaRepository<AboView, UUID>
+interface AboViewRepository : MongoRepository<AboView, UUID>

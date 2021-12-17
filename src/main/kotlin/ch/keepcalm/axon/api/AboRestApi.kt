@@ -5,7 +5,6 @@ import ch.keepcalm.axon.coreapi.CreateAboCommand
 import ch.keepcalm.axon.coreapi.SelectedRecipeCommand
 import ch.keepcalm.axon.readmodel.AboView
 import org.axonframework.commandhandling.gateway.CommandGateway
-import org.axonframework.messaging.responsetypes.ResponseType
 import org.axonframework.messaging.responsetypes.ResponseTypes
 import org.axonframework.queryhandling.QueryGateway
 import org.springframework.web.bind.annotation.*
@@ -13,6 +12,7 @@ import java.time.LocalDate
 import java.util.*
 import java.util.concurrent.CompletableFuture
 
+//import ch.keepcalm.axon.readmodel.AboView
 
 @RestController
 @RequestMapping("/abos")

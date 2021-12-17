@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import kotlin.script.experimental.jvm.JvmScriptEvaluationConfigurationBuilder.Companion.data
 
 plugins {
 	id("org.springframework.boot") version "2.6.1"
@@ -22,7 +23,6 @@ extra["testcontainersVersion"] = "1.16.0"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -33,14 +33,22 @@ dependencies {
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 	implementation("org.springframework.cloud:spring-cloud-starter")
 
+	// JPA
+	//	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	// Axon
 	implementation("org.axonframework:axon-spring-boot-starter:4.5.5"){
 		exclude("org.axonframework", "axon-server-connector")
 	}
+	// Axon Extensions MongoDb
+	implementation("org.axonframework.extensions.mongo:axon-mongo:4.5")
+	// Spring Boot MongoDB
+	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+
 
 	runtimeOnly("io.micrometer:micrometer-registry-prometheus")
 	runtimeOnly("org.postgresql:postgresql")
 	runtimeOnly("com.h2database:h2")
+	testImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
