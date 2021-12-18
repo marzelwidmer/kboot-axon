@@ -15,8 +15,58 @@ First run docker compose in `docker` folder.
 cd docker
 docker-compose up &
 ----
+otherwise, just run all the commands like beloved :
 
+.Docker run Postgres
+[source]
+----
+docker run --name postgres -e POSTGRES_PASSWORD=PNvHnvLzxH -p 5432:5432 -d postgres:12
+----
+.Execute psql
+[source]
+----
+docker exec -it postgres psql -Upostgres -a postgres
+----
+
+.Create eventstoredb database
+[source]
+----
+CREATE DATABASE eventstoredb;
+----
+
+.List all databases
+[source]
+----
+postgres=# \l
+                                  List of databases
+     Name     |  Owner   | Encoding |  Collate   |   Ctype    |   Access privileges
+--------------+----------+----------+------------+------------+-----------------------
+ eventstoredb | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+ postgres     | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+ template0    | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres          +
+              |          |          |            |            | postgres=CTc/postgres
+ template1    | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres          +
+              |          |          |            |            | postgres=CTc/postgres
+----
+
+.Change to eventstoredb
+[source]
+----
+\c eventstoredb;
+----
+
+.Select * from domain_event_entry
+[source]
+----
+SELECT * FROM domain_event_entry;
+ global_index | event_identifier | meta_data | payload | payload_revision | payload_type | time_stamp | aggregate_identifier | sequence_number | type
+--------------+------------------+-----------+---------+------------------+--------------+------------+----------------------+-----------------+------
+(0 rows)
+----
+
+.Start Spring Boot Application with postgres profile
 [source]
 ----
 SPRING_PROFILES_ACTIVE=postgres ./gradlew clean bootRun
 ----
+

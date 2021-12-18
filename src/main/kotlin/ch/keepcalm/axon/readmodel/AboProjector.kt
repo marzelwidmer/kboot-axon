@@ -1,12 +1,12 @@
 package ch.keepcalm.axon.readmodel
 
 import FindAboQuery
+import ch.keepcalm.axon.coreapi.AboCanceledEvent
 import ch.keepcalm.axon.coreapi.AboCreatedEvent
 import ch.keepcalm.axon.coreapi.RecipeSelectedEvent
 import org.axonframework.eventhandling.EventHandler
 import org.axonframework.queryhandling.QueryHandler
 import org.springframework.stereotype.Component
-import java.util.*
 
 @Component
 class AboProjector(val repository: AboViewRepository) {
@@ -30,35 +30,10 @@ class AboProjector(val repository: AboViewRepository) {
         }
     }
 
-//    @EventHandler
-//    fun handle(event: AboCanceledEvent) {
-//        repository.findById(event.aboId).ifPresent { aboView ->
-//            aboView.endeDatum = event.endeDatum
-//        }
-//    }
-
+    @EventHandler
+    fun handle(event: AboCanceledEvent) {
+        repository.findById(event.aboId).ifPresent { aboView ->
+            aboView.endeDatum = event.endDatum
+        }
+    }
 }
-
-//@Component
-//class AboProjector (val repository: AboViewRepository){
-//
-//    @QueryHandler
-//    fun handle(query: FindAboQuery) : AboView {
-//        return repository.findById(query.aboId).orElse(null)
-//    }
-//
-//    @EventSourcingHandler
-//    fun on(event: AboCreatedEvent){
-//    	AboView(eMail = event.eMail, startDatum = event.startDatum, endDatum = event.endDatum).run {
-//            repository.save(this)
-//        }
-//    }
-//
-//    @EventSourcingHandler
-//    fun on(event: RecipeSelectedEvent){
-//        repository.findById(event.aboId).ifPresent { aboView ->
-//            aboView.recipe = event.recipe
-//        }
-//    }
-//}
-
