@@ -25,35 +25,32 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+	implementation("org.springframework.cloud:spring-cloud-starter")
+	implementation("org.springframework.cloud:spring-cloud-starter-sleuth")
+	implementation("org.springframework.cloud:spring-cloud-starter-kubernetes-fabric8-all")
+	runtimeOnly("io.micrometer:micrometer-registry-prometheus")
 
 	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
-	implementation("org.springframework.cloud:spring-cloud-starter")
+
 
 	// Axon
 	implementation("org.axonframework:axon-spring-boot-starter:4.5.8"){
 		exclude("org.axonframework", "axon-server-connector")
 	}
-	// Axon Extensions MongoDb
-	implementation("org.axonframework.extensions.mongo:axon-mongo:4.5")
-	// Spring Boot MongoDB
+	implementation("org.axonframework.extensions.mongo:axon-mongo:4.5") // Axon Extensions MongoDb
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
-
-	runtimeOnly("io.micrometer:micrometer-registry-prometheus")
-
-
-	// Axon
 	testImplementation("org.axonframework:axon-test:4.5.8")
+	//
+
+	// Test
 	testImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo")
-	runtimeOnly("com.h2database:h2")
-
-
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
-	testImplementation("org.testcontainers:postgresql")
 
 }
 

@@ -8,16 +8,19 @@ server:
     include-message: never
 
 spring:
-  profiles:
-    active: default
   config:
     import:
       - classpath:config/common.yaml
       - classpath:config/mongodb.yaml
-#      - classpath:config/h2.yaml
-#      - classpath:config/postgres.yaml
 
-  application:
-    name:  kboot-axon
+  jackson:
+    time-zone: CET
+    default-property-inclusion: non_null
+    serialization:
+      write_dates_as_timestamps: false
+    deserialization:
+      fail-on-unknown-properties: false
 
-
+  security:
+    user:
+      roles: ACTUATOR

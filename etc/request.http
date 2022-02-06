@@ -3,7 +3,7 @@ POST http://localhost:8080/abos/create/e5bcb925-5b28-4df7-b9dd-795c65c168a8
 Content-Type: application/json
 
 {
-  "eMail": "foo@bar.ch",
+  "eMail": "foobar@bar.ch",
   "startDatum": "2021-11-29",
   "endDatum": null
 }

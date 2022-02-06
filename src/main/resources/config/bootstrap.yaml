@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: kboot-axon
+
+  cloud:
+    kubernetes:
+      reload:
+        enabled: false
+
+      discovery:
+        enabled: true
+
+---
+spring:
+  config:
+    activate:
+      on-profile: standalone
+
+  cloud:
+    kubernetes:
+      enabled: false
