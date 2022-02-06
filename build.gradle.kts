@@ -34,7 +34,7 @@ dependencies {
 	implementation("org.springframework.cloud:spring-cloud-starter")
 
 	// Axon
-	implementation("org.axonframework:axon-spring-boot-starter:4.5.5"){
+	implementation("org.axonframework:axon-spring-boot-starter:4.5.8"){
 		exclude("org.axonframework", "axon-server-connector")
 	}
 	// Axon Extensions MongoDb
@@ -43,7 +43,13 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 
 	runtimeOnly("io.micrometer:micrometer-registry-prometheus")
+
+
+	// Axon
+	testImplementation("org.axonframework:axon-test:4.5.8")
 	testImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo")
+	runtimeOnly("com.h2database:h2")
+
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")

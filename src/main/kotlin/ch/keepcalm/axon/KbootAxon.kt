@@ -10,12 +10,14 @@ import org.axonframework.spring.config.AxonConfiguration
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Profile
 import java.util.*
 
 
 @SpringBootApplication
 class KbootAxon {
 
+//	@Profile("mongo")
 	@Bean
 	fun eventStore(storageEngine: EventStorageEngine?, configuration: AxonConfiguration): EmbeddedEventStore? {
 		return EmbeddedEventStore.builder()
@@ -24,8 +26,8 @@ class KbootAxon {
 			.build()
 	}
 
-
 	// The `MongoEventStorageEngine` stores each event in a separate MongoDB document
+//	@Profile("mongo")
 	@Bean
 	fun storageEngine(client: MongoClient?): EventStorageEngine? {
 		return MongoEventStorageEngine.builder().mongoTemplate(DefaultMongoTemplate.builder().mongoDatabase(client).build()).build()

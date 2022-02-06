@@ -12,8 +12,6 @@ import java.time.LocalDate
 import java.util.*
 import java.util.concurrent.CompletableFuture
 
-//import ch.keepcalm.axon.readmodel.AboView
-
 @RestController
 @RequestMapping("/abos")
 class AboRestApi(val commandGateway: CommandGateway, val queryGateway: QueryGateway) {
