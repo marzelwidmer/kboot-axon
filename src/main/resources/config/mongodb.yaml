@@ -1,4 +1,7 @@
 spring:
   data:
     mongodb:
-      database: evenstore
+      database: abo-db
+  mongodb:
+    embedded:
+      version: 3.2.3

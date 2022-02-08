@@ -1,19 +1,19 @@
 version: "3"
 services:
-  postgres:
-    container_name: postgres-axon
-    image: "postgres:12"
-    environment:
-      POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "PNvHnvLzxH"
-      POSTGRES_DB: eventstoredb
-      PGDATA: "/data/postgres"
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
-      - /var/lib/postgres
-    ports:
-      - "5432:5432"
-    restart: unless-stopped
+#  postgres:
+#    container_name: postgres-axon
+#    image: "postgres:12"
+#    environment:
+#      POSTGRES_USER: "postgres"
+#      POSTGRES_PASSWORD: "PNvHnvLzxH"
+#      POSTGRES_DB: eventstoredb
+#      PGDATA: "/data/postgres"
+#    volumes:
+#      - postgres-data:/var/lib/postgresql/data
+#      - /var/lib/postgres
+#    ports:
+#      - "5432:5432"
+#    restart: unless-stopped
 
   mongodb:
     image: "mongo:latest"
@@ -22,7 +22,7 @@ services:
     volumes:
       - "mongodb_data_container:/data/db"
 volumes:
-  postgres-data:
+#  postgres-data:
   mongodb_data_container:
 
 

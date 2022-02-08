@@ -6,7 +6,8 @@ import java.util.*
 data class AboCreatedEvent(
     val aboId: UUID,
     val eMail: String,
-    val startDatum: LocalDate, val endDatum: LocalDate?
+    val startDatum: LocalDate,
+    val endDatum: LocalDate?
 )
 
 data class RecipeSelectedEvent(
