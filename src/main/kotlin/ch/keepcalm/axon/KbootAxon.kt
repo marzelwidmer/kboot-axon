@@ -7,6 +7,7 @@ import org.axonframework.eventsourcing.eventstore.EventStorageEngine
 import org.axonframework.eventsourcing.eventstore.EventStore
 import org.axonframework.extensions.mongo.DefaultMongoTemplate
 import org.axonframework.extensions.mongo.eventsourcing.eventstore.MongoEventStorageEngine
+import org.axonframework.serialization.json.JacksonSerializer
 import org.axonframework.serialization.xml.XStreamSerializer
 import org.axonframework.spring.config.AxonConfiguration
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -28,12 +29,18 @@ class KbootAxon {
     fun storageEngine(client: MongoClient?): EventStorageEngine? {
         return MongoEventStorageEngine.builder()
             .eventSerializer(
+//                JacksonSerializer.builder()
+//                    .defaultTyping()
+//                    .build()
                 XStreamSerializer.builder()
                     .xStream(SecureXStreamSerializer.xStream())
                     .build()
 
             )
             .snapshotSerializer(
+//                JacksonSerializer.builder()
+//                    .defaultTyping()
+//                    .build()
                 XStreamSerializer.builder()
                     .xStream(SecureXStreamSerializer.xStream())
                     .build()
