@@ -53,6 +53,15 @@ dependencies {
 	implementation("org.axonframework.extensions.mongo:axon-mongo:4.5") // Axon Extensions MongoDb
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
 
+	// Axon 3rd party Admin
+	// TODO https://github.com/codecentricnl/axon-open-admin/issues
+//	implementation("nl.codecentric.axon-open-admin:axon-open-admin-starter:0.0.10"){
+//		exclude("org.springframework.boot", "spring-boot-starter")
+//		exclude("org.springframework.boot", "spring-boot-starter-web")
+//	}
+
+
+	// Standalone enable embeded MongodDB
 	if(System.getenv("SPRING_PROFILES_ACTIVE") == STANDALONE){
 		implementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo")
 	} else {
