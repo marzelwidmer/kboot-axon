@@ -1,7 +1,11 @@
 spring:
   data:
     mongodb:
-      database: abo-db
-  mongodb:
-    embedded:
-      version: 3.2.3
+      uri: mongodb://root:${MONGODB_PASSWORD}@mongodb-0.mongodb-headless,mongodb-1.mongodb-headless,mongodb-2.mongodb-headless
+
+      database: kboot-axon-db
+      auto-index-creation: true
+
+#  mongodb:
+#    embedded:
+#      version: 3.2.3

@@ -38,7 +38,6 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 
-
 	// Axon
 	implementation("org.axonframework:axon-spring-boot-starter:4.5.8"){
 		exclude("org.axonframework", "axon-server-connector")
@@ -47,15 +46,20 @@ dependencies {
 	testImplementation("org.axonframework:axon-test:4.5.8")
 	// Axon Mongo Extensions
 	implementation("org.axonframework.extensions.mongo:axon-mongo:4.5") // Axon Extensions MongoDb
+	implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
 
-	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+	if(System.getenv("SPRING_PROFILES_ACTIVE") == "standalone"){
+		implementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo")
+	} else {
+		testImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo")
+	}
 
 	// Test
-	testImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
 
 }
+
 
 dependencyManagement {
 	imports {
