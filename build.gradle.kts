@@ -1,6 +1,9 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import kotlin.script.experimental.jvm.JvmScriptEvaluationConfigurationBuilder.Companion.data
 
+
+
+
 plugins {
 	id("org.springframework.boot") version "2.6.1"
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
@@ -12,6 +15,8 @@ plugins {
 group = "ch.keepcalm"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
+
+val STANDALONE = "standalone"
 
 repositories {
 	mavenCentral()
@@ -48,7 +53,7 @@ dependencies {
 	implementation("org.axonframework.extensions.mongo:axon-mongo:4.5") // Axon Extensions MongoDb
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
 
-	if(System.getenv("SPRING_PROFILES_ACTIVE") == "standalone"){
+	if(System.getenv("SPRING_PROFILES_ACTIVE") == STANDALONE){
 		implementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo")
 	} else {
 		testImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo")

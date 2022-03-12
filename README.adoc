@@ -14,3 +14,10 @@ docker-compose up &
 ----
 ./gradlew clean bootRun
 ----
+
+== Standalone Profile
+
+[source]
+----
+SPRING_PROFILES_ACTIVE=standalone ./gradlew clean bootRun
+----
